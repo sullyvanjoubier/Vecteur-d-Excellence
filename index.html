@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Brief créatif — Vecteur d'excellence</title>
+<meta name="description" content="Décrivez votre projet en quelques minutes : objectifs, thème, direction artistique. Vecteur d'excellence transforme votre brief en présence numérique premium." />
+<meta name="theme-color" content="#EFE7D3" />
+
+<!-- Favicon (symbole de la marque) -->
+<link rel="icon" type="image/png" href="../assets/favicon.png" />
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png" />
+
+<!-- Open Graph -->
+<meta property="og:title" content="Brief créatif — Vecteur d'excellence" />
+<meta property="og:description" content="Quelques minutes pour nous dire exactement ce que vous voulez. Le reste, c'est notre métier." />
+<meta property="og:type" content="website" />
+
+<!-- Google Fonts : Cormorant Garamond (titres/signatures) + Inter (corps/UI) -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<style>
+/* =====================================================================
+   VECTEUR D'EXCELLENCE — Brief créatif client
+   Charte graphique officielle V.01 — Édition 2026
+   Palette : Terre Bleue #1A0089 · Portland Orange #D4633F
+             White Chocolate #EFE7D3 · Noir Encre #1F1F1F
+   Typographies : Cormorant Garamond (titres) · Inter (corps/UI)
+   ===================================================================== */
+
+/* --- 1. VARIABLES DE DESIGN ----------------------------------------- */
+:root{
+  --navy:        #1A0089;
+  --orange:      #D4633F;
+  --cream:       #EFE7D3;
+  --ink:         #1F1F1F;
+
+  --navy-deep:   #13005F;
+  --navy-soft:   #2A19A0;
+  --orange-dark: #BC5435;
+  --cream-card:  #F4EEDF;
+  --cream-deep:  #E4D9BF;
+  --ink-soft:    #54514B;
+  --ink-mute:    #8A857C;
+
+  --line-navy:   rgba(26, 0, 137, .14);
+  --line-cream:  rgba(239, 231, 211, .18);
+  --shadow-card: 0 1px 2px rgba(26,0,137,.04), 0 12px 30px -18px rgba(26,0,137,.18);
+  --shadow-lift: 0 6px 14px rgba(26,0,137,.06), 0 26px 50px -22px rgba(26,0,137,.30);
+
+  --maxw: 1080px;
+  --pad-x: clamp(22px, 5vw, 64px);
+  --radius: 4px;
+
+  --serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --sans:  "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+/* --- 2. RESET ------------------------------------------------------- */
+*,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+html{ scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
+body{
+  font-family:var(--sans);
+  background:var(--cream);
+  color:var(--ink);
+  line-height:1.7;
+  font-size:16.5px;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+img{ max-width:100%; display:block; }
+a{ color:inherit; text-decoration:none; }
+button{ font-family:inherit; cursor:pointer; border:none; background:none; color:inherit; }
+fieldset{ border:0; min-width:0; }
+[hidden]{ display:none !important; }
+input,select,textarea{ font-family:inherit; font-size:1rem; color:inherit; }
+ul{ list-style:none; }
+::selection{ background:var(--navy); color:var(--cream); }
+
+/* --- 3. PRIMITIVES TYPOGRAPHIQUES ----------------------------------- */
+.container{ width:100%; max-width:var(--maxw); margin-inline:auto; padding-inline:var(--pad-x); }
+
+.eyebrow{
+  font-family:var(--sans);
+  font-size:.72rem;
+  font-weight:500;
+  text-transform:uppercase;
+  letter-spacing:.34em;
+  color:var(--orange);
+  display:inline-block;
+}
+h1,h2,h3,.serif{ font-family:var(--serif); font-weight:500; line-height:1.06; }
+.h1{
+  font-size:clamp(2.4rem, 6vw, 4.6rem);
+  letter-spacing:-.015em;
+  font-weight:500;
+  color:var(--navy);
+}
+.h1 i{ font-style:italic; }
+.lead{
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:500;
+  font-size:clamp(1.12rem, 1.9vw, 1.4rem);
+  line-height:1.5;
+  color:var(--navy);
+}
+.body{ font-size:1.02rem; line-height:1.75; color:var(--ink-soft); }
+.caption{
+  font-size:.7rem;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--ink-mute);
+}
+
+/* --- 4. BOUTONS ------------------------------------------------------ */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:.55em;
+  font-family:var(--sans);
+  font-size:.82rem; font-weight:600;
+  letter-spacing:.04em;
+  padding:15px 30px;
+  border-radius:var(--radius);
+  transition:transform .35s cubic-bezier(.2,.7,.2,1), background-color .35s ease,
+             color .35s ease, box-shadow .35s ease, border-color .35s ease, opacity .35s ease;
+  will-change:transform;
+}
+.btn--orange{
+  background:var(--orange); color:#fff;
+  box-shadow:0 10px 24px -12px rgba(212,99,63,.7);
+}
+.btn--orange:hover{ background:var(--orange-dark); transform:translateY(-3px);
+  box-shadow:0 16px 30px -12px rgba(212,99,63,.75); }
+.btn--outline{
+  border:1.5px solid var(--navy); color:var(--navy); background:transparent;
+}
+.btn--outline:hover{ background:var(--navy); color:var(--cream); transform:translateY(-3px); }
+.btn .arr{ transition:transform .35s ease; }
+.btn:hover .arr{ transform:translateX(4px); }
+.btn[disabled]{ opacity:.45; pointer-events:none; }
+
+/* --- 5. NAVIGATION ---------------------------------------------------- */
+.nav{
+  position:fixed; inset:0 0 auto 0; z-index:100;
+  transition:background-color .4s ease, box-shadow .4s ease, border-color .4s ease, backdrop-filter .4s ease;
+  border-bottom:1px solid transparent;
+}
+.nav.scrolled{
+  background:rgba(239,231,211,.78);
+  backdrop-filter:saturate(140%) blur(14px);
+  -webkit-backdrop-filter:saturate(140%) blur(14px);
+  border-bottom:1px solid var(--line-navy);
+  box-shadow:0 8px 30px -24px rgba(26,0,137,.5);
+}
+.nav__inner{
+  display:flex; align-items:center; justify-content:space-between;
+  height:74px;
+}
+.brand{ display:inline-flex; align-items:center; gap:12px; }
+.brand img{ height:34px; width:auto; }
+.brand__word{
+  font-family:var(--serif); line-height:.92; color:var(--navy);
+  font-size:1.18rem; font-weight:600; letter-spacing:.005em;
+}
+.brand__word i{ display:block; font-style:italic; font-weight:500; }
+.nav__back{
+  font-size:.82rem; font-weight:600; letter-spacing:.04em; color:var(--navy);
+  display:inline-flex; align-items:center; gap:.5em;
+  transition:color .3s ease;
+}
+.nav__back:hover{ color:var(--orange); }
+.nav__back .arr{ transition:transform .35s ease; }
+.nav__back:hover .arr{ transform:translateX(-4px); }
+
+/* --- 6. HERO ----------------------------------------------------------- */
+.hero{ padding:clamp(140px, 18vw, 200px) 0 clamp(40px, 6vw, 72px); text-align:center; }
+.hero .eyebrow{ margin-bottom:22px; }
+.hero .h1{ max-width:18ch; margin-inline:auto; }
+.hero .lead{ max-width:46ch; margin:24px auto 0; }
+.hero__meta{ margin-top:26px; display:flex; justify-content:center; gap:28px; flex-wrap:wrap; }
+.hero__meta .caption{ display:inline-flex; align-items:center; gap:.6em; }
+.hero__meta .dot{ width:5px; height:5px; border-radius:50%; background:var(--orange); display:inline-block; }
+
+@keyframes rise{ from{ opacity:0; transform:translateY(26px); } to{ opacity:1; transform:none; } }
+[data-hero]{ animation:rise .9s cubic-bezier(.2,.7,.2,1) both; }
+[data-hero]:nth-child(2){ animation-delay:.08s; }
+[data-hero]:nth-child(3){ animation-delay:.16s; }
+[data-hero]:nth-child(4){ animation-delay:.24s; }
+
+/* --- 7. WIZARD --------------------------------------------------------- */
+.wizard{ padding-bottom:clamp(90px, 12vw, 150px); }
+.form{
+  max-width:880px; margin-inline:auto;
+  background:var(--cream-card); border:1px solid var(--line-navy); border-radius:var(--radius);
+  padding:clamp(28px, 4.5vw, 56px);
+  box-shadow:var(--shadow-card);
+}
+
+/* Barre de progression */
+.progress{ max-width:880px; margin:0 auto 30px; }
+.progress__top{ display:flex; justify-content:space-between; align-items:baseline; gap:14px; margin-bottom:12px; }
+.progress__step{ font-family:var(--serif); font-style:italic; font-weight:500; color:var(--navy); font-size:1.15rem; }
+.progress__count{ font-size:.72rem; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-mute); }
+.progress__bar{ height:2px; background:var(--cream-deep); border-radius:2px; overflow:hidden; }
+.progress__fill{ height:100%; width:0; background:var(--orange); transition:width .6s cubic-bezier(.2,.7,.2,1); }
+
+/* Panneaux d'étapes */
+.panel{ display:none; }
+.panel.active{ display:block; animation:rise .55s cubic-bezier(.2,.7,.2,1) both; }
+.panel__head{ margin-bottom:34px; }
+.panel__head .eyebrow{ margin-bottom:14px; }
+.panel__title{ font-family:var(--serif); font-weight:500; font-size:clamp(1.7rem, 3.4vw, 2.4rem); color:var(--navy); line-height:1.1; }
+.panel__sub{ margin-top:12px; color:var(--ink-soft); font-size:.98rem; max-width:58ch; }
+
+.form__grid{ display:grid; grid-template-columns:1fr 1fr; gap:26px 24px; }
+.field{ display:flex; flex-direction:column; gap:9px; }
+.field--full{ grid-column:1 / -1; }
+.field label, .field .lbl{ font-size:.74rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--navy); }
+.field .req{ color:var(--orange); }
+.field .opt{ text-transform:none; letter-spacing:0; color:var(--ink-mute); font-weight:400; }
+.field .hint{ font-size:.82rem; color:var(--ink-mute); line-height:1.5; margin-top:-2px; }
+.field input[type=text],
+.field input[type=email],
+.field input[type=tel],
+.field input[type=url],
+.field select,
+.field textarea{
+  width:100%; background:var(--cream); color:var(--ink);
+  border:1px solid var(--line-navy); border-radius:var(--radius);
+  padding:14px 16px; transition:border-color .3s ease, box-shadow .3s ease, background-color .3s ease;
+}
+.field textarea{ resize:vertical; min-height:150px; line-height:1.6; }
+.field input:focus,.field select:focus,.field textarea:focus{
+  outline:none; border-color:var(--navy); background:#fff;
+  box-shadow:0 0 0 3px rgba(26,0,137,.08);
+}
+.field input::placeholder,.field textarea::placeholder{ color:var(--ink-mute); }
+
+/* Chips sélectionnables (services, objectifs, ambiance) */
+.chips{ display:flex; flex-wrap:wrap; gap:10px; }
+.chips__opt{
+  font-size:.88rem; font-weight:500; color:var(--ink-soft);
+  border:1px solid var(--line-navy); border-radius:100px;
+  padding:10px 18px; background:var(--cream);
+  transition:background-color .25s ease, color .25s ease, border-color .25s ease, transform .25s ease, box-shadow .25s ease;
+}
+.chips__opt:hover{ border-color:var(--navy); color:var(--navy); transform:translateY(-2px); }
+.chips__opt[aria-pressed="true"]{
+  background:var(--navy); border-color:var(--navy); color:var(--cream);
+  box-shadow:0 10px 22px -14px rgba(26,0,137,.65);
+}
+.chips__opt--autre{ border-style:dashed; }
+.chips__autre{ width:100%; }
+.chips__autre input{ max-width:440px; }
+
+/* Cartes radio (style typographique) */
+.cards-radio{ display:grid; grid-template-columns:repeat(2, 1fr); gap:14px; }
+.card-radio,
+.field label.card-radio{
+  position:relative; display:block; cursor:pointer;
+  /* neutralise le style uppercase de .field label (spécificité supérieure) */
+  text-transform:none; letter-spacing:normal; font-weight:400; font-size:1rem;
+}
+.card-radio input{ position:absolute; opacity:0; pointer-events:none; }
+.card-radio__bd{
+  display:flex; flex-direction:column; gap:6px;
+  height:100%;
+  border:1px solid var(--line-navy); border-radius:var(--radius); background:var(--cream);
+  padding:22px 24px 20px;
+  transition:border-color .3s ease, background-color .3s ease, box-shadow .3s ease, transform .3s ease;
+}
+.card-radio:hover .card-radio__bd{ border-color:var(--navy); transform:translateY(-2px); }
+.card-radio input:checked + .card-radio__bd{
+  border-color:var(--navy); background:#fff; box-shadow:var(--shadow-lift);
+}
+.card-radio input:focus-visible + .card-radio__bd{ box-shadow:0 0 0 3px rgba(26,0,137,.18); }
+.card-radio__name{
+  display:block; font-size:.7rem; font-weight:600; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--orange);
+}
+.card-radio__sample{
+  display:block; font-size:clamp(1.6rem, 2.6vw, 1.95rem); line-height:1.12; color:var(--navy);
+  padding-right:26px;             /* laisse la place au badge ✓ */
+}
+.card-radio__sample--serif{ font-family:var(--serif); font-weight:600; }
+.card-radio__sample--sans{ font-family:var(--sans); font-weight:600; letter-spacing:-.015em; }
+.card-radio__sample--display{ font-family:var(--serif); font-style:italic; font-weight:500; }
+.card-radio__desc{
+  display:block; font-size:.86rem; font-weight:400; color:var(--ink-mute); line-height:1.55;
+  margin-top:2px;
+}
+.card-radio input:checked + .card-radio__bd .card-radio__check{ opacity:1; transform:scale(1); }
+.card-radio__check{
+  position:absolute; top:14px; right:14px; width:22px; height:22px; border-radius:50%;
+  background:var(--orange); color:#fff; display:flex; align-items:center; justify-content:center;
+  font-size:.72rem; opacity:0; transform:scale(.6);
+  transition:opacity .3s ease, transform .3s cubic-bezier(.2,.7,.2,1);
+}
+
+/* Palettes de couleurs */
+.palettes{ display:grid; grid-template-columns:repeat(3, 1fr); gap:14px; }
+.palette{
+  border:1px solid var(--line-navy); border-radius:var(--radius); background:var(--cream);
+  padding:16px; text-align:left; position:relative;
+  transition:border-color .3s ease, background-color .3s ease, box-shadow .3s ease, transform .3s ease;
+}
+.palette:hover{ border-color:var(--navy); transform:translateY(-2px); }
+.palette[aria-pressed="true"]{ border-color:var(--navy); background:#fff; box-shadow:var(--shadow-lift); }
+.palette__swatches{ display:flex; gap:6px; margin-bottom:12px; }
+.palette__swatches span{
+  flex:1; height:38px; border-radius:3px; border:1px solid rgba(31,31,31,.08);
+}
+.palette__name{ font-size:.74rem; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--navy); }
+.palette__desc{ font-size:.8rem; color:var(--ink-mute); line-height:1.45; margin-top:3px; }
+.palette__check{
+  position:absolute; top:10px; right:10px; width:22px; height:22px; border-radius:50%;
+  background:var(--orange); color:#fff; display:flex; align-items:center; justify-content:center;
+  font-size:.72rem; opacity:0; transform:scale(.6);
+  transition:opacity .3s ease, transform .3s cubic-bezier(.2,.7,.2,1);
+}
+.palette[aria-pressed="true"] .palette__check{ opacity:1; transform:scale(1); }
+.palette--autre{ border-style:dashed; }
+.palette__wheel-ico{
+  display:block; width:38px; height:38px; border-radius:50%; margin-bottom:12px;
+  border:1px solid rgba(31,31,31,.08);
+  background:radial-gradient(circle closest-side, #fff 0%, rgba(255,255,255,0) 72%),
+             conic-gradient(#FF3B30,#FFCC00 16.66%,#34C759 33.33%,#32ADE6 50%,#1A0089 66.66%,#AF52DE 83.33%,#FF3B30);
+}
+
+/* Atelier palette personnalisée (roue chromatique) */
+.wheel-box{
+  background:var(--cream); border:1px solid var(--line-navy); border-radius:var(--radius);
+  padding:clamp(16px, 3vw, 26px);
+}
+.wheel-box__grid{ display:flex; gap:clamp(20px,3.5vw,34px); align-items:center; flex-wrap:wrap; }
+.wheel{
+  position:relative; flex:0 0 auto; width:210px; height:210px; border-radius:50%;
+  cursor:crosshair; touch-action:none;
+  box-shadow:0 0 0 1px var(--line-navy), var(--shadow-card);
+  background:radial-gradient(circle closest-side, #fff 0%, rgba(255,255,255,0) 72%),
+             conic-gradient(#FF0000,#FFFF00 16.66%,#00FF00 33.33%,#00FFFF 50%,#0000FF 66.66%,#FF00FF 83.33%,#FF0000);
+}
+.wheel__cursor{
+  position:absolute; width:18px; height:18px; border-radius:50%;
+  border:2.5px solid #fff;
+  box-shadow:0 0 0 1.5px rgba(31,31,31,.35), 0 2px 6px rgba(31,31,31,.3);
+  transform:translate(-50%,-50%); pointer-events:none;
+}
+.wheel-box__ctrl{ display:flex; flex-direction:column; gap:16px; flex:1; min-width:200px; }
+.wheel-box__preview{ display:flex; align-items:center; gap:13px; }
+.wheel-box__preview .pastille{ width:46px; height:46px; border-radius:50%; border:1px solid var(--line-navy); flex:0 0 auto; }
+.wheel-box__preview code{ font-size:.98rem; font-weight:600; letter-spacing:.07em; color:var(--navy); }
+.wheel-box__lum{ display:flex; flex-direction:column; gap:8px; }
+.wheel-box__lum input{ width:100%; max-width:none; accent-color:var(--navy); }
+.wheel-box__add{ align-self:flex-start; padding:12px 22px; font-size:.78rem; }
+.wheel-box__swatches{ display:flex; flex-wrap:wrap; gap:10px; margin-top:18px; }
+.wheel-box__swatches:empty{ display:none; }
+.wheel-swatch{
+  display:inline-flex; align-items:center; gap:9px;
+  background:#fff; border:1px solid var(--line-navy); border-radius:100px;
+  padding:6px 12px 6px 7px; font-size:.78rem; font-weight:600; letter-spacing:.04em; color:var(--ink);
+}
+.wheel-swatch i{ width:22px; height:22px; border-radius:50%; border:1px solid rgba(31,31,31,.12); }
+.wheel-swatch button{ color:var(--orange); font-size:1rem; line-height:1; }
+.wheel-box > .hint{ margin-top:14px; }
+
+/* Curseur de fourchette (budget) — double poignée */
+.range-slider{ padding-top:6px; }
+.range-slider__head{
+  display:flex; align-items:center; gap:14px;
+  font-family:var(--serif); font-style:italic; font-weight:500;
+  font-size:clamp(1.25rem, 2.4vw, 1.55rem); color:var(--navy);
+  margin-bottom:18px;
+}
+.range-slider__value{
+  font-family:var(--serif); font-style:italic; font-weight:600;
+  color:var(--navy); letter-spacing:.005em;
+}
+.range-slider__sep{ color:var(--orange); font-style:normal; font-weight:500; }
+.range-slider__track{
+  position:relative; height:34px;
+  margin:0 11px;        /* laisse dépasser les poignées sans rogner */
+}
+.range-slider__track::before{
+  content:""; position:absolute; left:-11px; right:-11px; top:50%;
+  transform:translateY(-50%);
+  height:3px; background:var(--cream-deep); border-radius:3px;
+}
+.range-slider__fill{
+  position:absolute; top:50%; transform:translateY(-50%);
+  height:3px; background:var(--orange); border-radius:3px; pointer-events:none;
+}
+.range-slider__track input[type=range]{
+  position:absolute; left:-11px; right:-11px; top:0; bottom:0;
+  width:calc(100% + 22px); height:100%;
+  background:transparent; -webkit-appearance:none; appearance:none;
+  pointer-events:none;       /* la piste est transparente, seul le pouce est cliquable */
+  margin:0; padding:0;
+}
+.range-slider__track input[type=range]::-webkit-slider-runnable-track{ background:transparent; }
+.range-slider__track input[type=range]::-moz-range-track{ background:transparent; }
+.range-slider__track input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none; appearance:none;
+  width:22px; height:22px; border-radius:50%;
+  background:var(--navy); border:3px solid #fff;
+  box-shadow:0 2px 6px rgba(26,0,137,.35), 0 0 0 1px var(--line-navy);
+  cursor:grab; pointer-events:auto;
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.range-slider__track input[type=range]::-moz-range-thumb{
+  width:22px; height:22px; border-radius:50%;
+  background:var(--navy); border:3px solid #fff;
+  box-shadow:0 2px 6px rgba(26,0,137,.35), 0 0 0 1px var(--line-navy);
+  cursor:grab; pointer-events:auto;
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.range-slider__track input[type=range]:hover::-webkit-slider-thumb,
+.range-slider__track input[type=range]:focus::-webkit-slider-thumb{
+  transform:scale(1.08); box-shadow:0 4px 10px rgba(26,0,137,.45), 0 0 0 1px var(--line-navy);
+}
+.range-slider__track input[type=range]:hover::-moz-range-thumb,
+.range-slider__track input[type=range]:focus::-moz-range-thumb{
+  transform:scale(1.08); box-shadow:0 4px 10px rgba(26,0,137,.45), 0 0 0 1px var(--line-navy);
+}
+.range-slider__track input[type=range]:focus{ outline:none; }
+.range-slider__scale{
+  display:flex; justify-content:space-between; margin-top:14px;
+  font-size:.66rem; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-mute);
+}
+
+/* Checkboxes simples */
+.check{ display:flex; gap:13px; align-items:flex-start; cursor:pointer; }
+.check input{ margin-top:3px; width:18px; height:18px; accent-color:var(--navy); flex:0 0 auto; }
+.check span{ font-size:.92rem; color:var(--ink-soft); line-height:1.55;
+  text-transform:none; letter-spacing:normal; font-weight:400; }
+.check .req{ color:var(--orange); }
+.checks-grid{ display:grid; grid-template-columns:1fr 1fr; gap:13px 24px; }
+
+/* Drag & drop upload */
+.drop{
+  border:1.6px dashed rgba(26,0,137,.28); border-radius:var(--radius);
+  padding:30px 24px; text-align:center; color:var(--ink-soft);
+  transition:border-color .3s ease, background-color .3s ease;
+  cursor:pointer; background:var(--cream);
+}
+.drop.drag{ border-color:var(--orange); background:rgba(212,99,63,.05); }
+.drop strong{ color:var(--navy); font-weight:600; }
+.drop .caption{ margin-top:8px; display:block; }
+.drop__list{ margin-top:16px; display:flex; flex-direction:column; gap:8px; text-align:left; }
+.drop__file{ display:flex; justify-content:space-between; align-items:center; gap:12px;
+  font-size:.85rem; background:#fff; border:1px solid var(--line-navy); border-radius:var(--radius); padding:9px 13px; }
+.drop__file button{ color:var(--orange); font-size:1.1rem; line-height:1; }
+
+/* Récapitulatif */
+.recap{
+  background:var(--cream); border:1px solid var(--line-navy); border-radius:var(--radius);
+  padding:24px 26px;
+}
+.recap__title{ font-family:var(--serif); font-style:italic; font-weight:500; font-size:1.25rem; color:var(--navy); margin-bottom:14px; }
+.recap dl{ display:grid; grid-template-columns:max-content 1fr; gap:8px 22px; }
+.recap dt{ font-size:.7rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-mute); padding-top:3px; }
+.recap dd{ font-size:.92rem; color:var(--ink); line-height:1.55; }
+.recap dd em{ color:var(--ink-mute); font-style:italic; }
+
+/* Navigation entre étapes */
+.wizard__nav{ display:flex; justify-content:space-between; align-items:center; gap:16px; margin-top:40px; }
+.wizard__nav .btn--outline{ padding-inline:24px; }
+.form__error{ color:var(--orange); font-size:.88rem; text-align:center; display:none; margin-top:22px; }
+.form__error.show{ display:block; }
+.form__note{ text-align:center; margin-top:16px; }
+
+/* État succès */
+.form-success{ display:none; text-align:center; padding:clamp(30px,5vw,60px) 20px; }
+.form-success.show{ display:block; animation:rise .7s cubic-bezier(.2,.7,.2,1) both; }
+.form-success img{ width:62px; margin:0 auto 26px; opacity:.9; }
+.form-success__title{ font-family:var(--serif); font-style:italic; font-weight:500; color:var(--navy);
+  font-size:clamp(1.5rem,3vw,2.2rem); line-height:1.3; max-width:24ch; margin:0 auto; }
+.form-success__body{ margin-top:18px; color:var(--ink-soft); font-size:.98rem; max-width:48ch; margin-inline:auto; }
+.form-success__sym{ width:42px; margin:30px auto 0; opacity:.7; }
+
+/* --- 8. FOOTER --------------------------------------------------------- */
+.footer{ border-top:1px solid var(--line-navy); padding-block:clamp(40px,6vw,60px) 0; background:var(--cream); }
+.footer__inner{ display:flex; justify-content:space-between; align-items:center; gap:24px; flex-wrap:wrap; }
+.footer__brand{ display:inline-flex; align-items:center; gap:14px; }
+.footer__brand img{ height:46px; }
+.footer__brand p{ font-family:var(--serif); font-style:italic; color:var(--ink-soft); font-size:1rem; line-height:1.4; max-width:30ch; }
+.footer__links{ display:flex; gap:24px; flex-wrap:wrap; }
+.footer__links a{ color:var(--ink-soft); font-size:.9rem; transition:color .3s ease; }
+.footer__links a:hover{ color:var(--orange); }
+.footer__bottom{ margin-top:clamp(30px,5vw,44px); padding-block:24px; border-top:1px solid var(--line-navy);
+  display:flex; justify-content:space-between; align-items:center; gap:18px; flex-wrap:wrap; }
+
+/* --- 9. RESPONSIVE ------------------------------------------------------ */
+@media (max-width:880px){
+  .palettes{ grid-template-columns:repeat(2, 1fr); }
+}
+@media (max-width:680px){
+  .form__grid{ grid-template-columns:1fr; }
+  .cards-radio{ grid-template-columns:1fr; }
+  .palettes{ grid-template-columns:1fr; }
+  .checks-grid{ grid-template-columns:1fr; }
+  .recap dl{ grid-template-columns:1fr; gap:2px; }
+  .recap dt{ margin-top:10px; }
+  .wizard__nav{ flex-direction:column-reverse; }
+  .wizard__nav .btn{ width:100%; }
+  .footer__inner{ flex-direction:column; align-items:flex-start; }
+}
+@media (max-width:380px){
+  :root{ --pad-x:20px; }
+}
+
+/* --- Accessibilité : mouvement réduit --- */
+@media (prefers-reduced-motion:reduce){
+  *{ animation-duration:.001ms !important; animation-iteration-count:1 !important;
+     transition-duration:.001ms !important; scroll-behavior:auto !important; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ====================== NAVIGATION ====================== -->
+<header class="nav" id="nav">
+  <div class="container nav__inner">
+    <a href="../index.html" class="brand" aria-label="Vecteur d'excellence — retour au site">
+      <img src="../assets/logo_symbole.png" alt="" />
+      <span class="brand__word">Vecteur<i>d'excellence</i></span>
+    </a>
+    <a href="../index.html" class="nav__back"><span class="arr">←</span> Retour au site</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- ====================== HERO ====================== -->
+  <section class="hero">
+    <div class="container">
+      <span class="eyebrow" data-hero>Brief créatif — Étape fondatrice</span>
+      <h1 class="h1" data-hero>Dites-nous tout, <i>nous dessinons le reste.</i></h1>
+      <p class="lead" data-hero>Vos objectifs, votre univers, vos goûts : cinq minutes de précision pour un projet qui vous ressemble dès la première proposition.</p>
+      <div class="hero__meta" data-hero>
+        <span class="caption"><span class="dot"></span> 4 étapes</span>
+        <span class="caption"><span class="dot"></span> ± 5 minutes</span>
+        <span class="caption"><span class="dot"></span> Sans engagement</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== FORMULAIRE ====================== -->
+  <section class="wizard">
+    <div class="container">
+
+      <!-- Progression -->
+      <div class="progress" id="progress">
+        <div class="progress__top">
+          <span class="progress__step" id="progressStep">Vous</span>
+          <span class="progress__count" id="progressCount">Étape 1 / 4</span>
+        </div>
+        <div class="progress__bar"><div class="progress__fill" id="progressFill"></div></div>
+      </div>
+
+      <!--
+        FORMULAIRE — Backend FormSubmit (gratuit, sans compte).
+        ▸ La toute première soumission déclenche un mail de confirmation
+          envoyé par FormSubmit à vecteur.excellence@gmail.com : un clic
+          dans ce mail active le formulaire pour de bon.
+        ▸ Pour cacher l'email du code source, on peut plus tard remplacer
+          l'adresse dans `action` par l'alias hashé fourni par le dashboard
+          FormSubmit (https://formsubmit.co/your_alias).
+      -->
+      <form class="form" id="briefForm"
+            action="https://formsubmit.co/vecteur.excellence@gmail.com"
+            method="POST" enctype="multipart/form-data" novalidate>
+
+        <input type="hidden" name="_subject"  value="Nouveau brief créatif — Vecteur d'excellence" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_captcha"  value="false" />
+        <input type="hidden" name="_next"     value="" />
+        <input type="text"   name="_honey"    style="display:none" tabindex="-1" autocomplete="off" />
+
+        <!-- ============ ÉTAPE 1 — VOUS ============ -->
+        <fieldset class="panel active" data-step="1" data-title="Vous">
+          <div class="panel__head">
+            <span class="eyebrow">01 — Faisons connaissance</span>
+            <h2 class="panel__title">Qui êtes-vous&nbsp;?</h2>
+            <p class="panel__sub">L'essentiel pour vous répondre, et comprendre le contexte dans lequel votre projet va vivre.</p>
+          </div>
+
+          <div class="form__grid">
+            <div class="field">
+              <label for="nom">Nom complet <span class="req">*</span></label>
+              <input type="text" id="nom" name="Nom complet" placeholder="Jeanne Marceau" autocomplete="name" required />
+            </div>
+            <div class="field">
+              <label for="email">Email <span class="req">*</span></label>
+              <input type="email" id="email" name="Email" placeholder="jeanne@atelier-marceau.fr" autocomplete="email" required />
+            </div>
+            <div class="field">
+              <label for="tel">Téléphone <span class="opt">(optionnel)</span></label>
+              <input type="tel" id="tel" name="Téléphone" placeholder="06 00 00 00 00" autocomplete="tel" />
+            </div>
+            <div class="field">
+              <label for="entreprise">Entreprise / activité <span class="req">*</span></label>
+              <input type="text" id="entreprise" name="Entreprise" placeholder="Atelier Marceau" autocomplete="organization" required />
+            </div>
+            <div class="field">
+              <label for="metier">Votre métier</label>
+              <input type="text" id="metier" name="Métier" list="metiers" placeholder="Ex. plombier, ostéopathe, fleuriste…" />
+              <datalist id="metiers">
+                <option value="Plombier"></option><option value="Électricien"></option>
+                <option value="Serrurier"></option><option value="Menuisier"></option>
+                <option value="Peintre en bâtiment"></option><option value="Carreleur"></option>
+                <option value="Isoleur"></option><option value="Installateur climatisation"></option>
+                <option value="Installateur portail / clôture"></option><option value="Ramoneur"></option>
+                <option value="Géomètre"></option><option value="Paysagiste"></option>
+                <option value="Déménageur"></option><option value="Entreprise de nettoyage"></option>
+                <option value="Désinsectiseur"></option><option value="Ostéopathe"></option>
+                <option value="Kinésithérapeute"></option><option value="Nutritionniste"></option>
+                <option value="Psychologue"></option><option value="Hypnotiseur"></option>
+                <option value="Acupuncteur"></option><option value="Pédicure"></option>
+                <option value="Institut de beauté"></option><option value="Salon de coiffure"></option>
+                <option value="Studio de yoga"></option><option value="Coach de sport"></option>
+                <option value="Tatoueur"></option><option value="Boulangerie"></option>
+                <option value="Fleuriste"></option><option value="Caviste"></option>
+                <option value="Bijouterie"></option><option value="Traiteur"></option>
+                <option value="Cordonnier"></option><option value="Toiletteur canin"></option>
+                <option value="Éducateur canin"></option><option value="Entreprise événementielle"></option>
+              </datalist>
+            </div>
+            <div class="field">
+              <label for="ville">Ville / zone d'intervention</label>
+              <input type="text" id="ville" name="Ville" placeholder="Rennes et alentours" />
+            </div>
+            <div class="field field--full">
+              <label for="presence">Présence en ligne actuelle <span class="opt">(site, Instagram, fiche Google…)</span></label>
+              <input type="text" id="presence" name="Présence en ligne" placeholder="www.atelier-marceau.fr · @ateliermarceau · aucune pour l'instant" />
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- ============ ÉTAPE 2 — VOTRE PROJET ============ -->
+        <fieldset class="panel" data-step="2" data-title="Votre projet">
+          <div class="panel__head">
+            <span class="eyebrow">02 — Le cap</span>
+            <h2 class="panel__title">Que construisons-nous&nbsp;?</h2>
+            <p class="panel__sub">Sélectionnez ce dont vous avez besoin et ce que ça doit changer pour votre activité.</p>
+          </div>
+
+          <div class="form__grid">
+            <div class="field field--full">
+              <span class="lbl">Prestations souhaitées <span class="req">*</span></span>
+              <p class="hint">Plusieurs choix possibles.</p>
+              <div class="chips" id="chipsServices" role="group" aria-label="Prestations souhaitées">
+                <button type="button" class="chips__opt" aria-pressed="false">Site web vitrine</button>
+                <button type="button" class="chips__opt" aria-pressed="false">Logo &amp; identité visuelle</button>
+                <button type="button" class="chips__opt" aria-pressed="false">Direction artistique complète</button>
+                <button type="button" class="chips__opt" aria-pressed="false">Posts réseaux sociaux</button>
+                <button type="button" class="chips__opt" aria-pressed="false">Cartes de visite (print &amp; NFC)</button>
+                <button type="button" class="chips__opt" aria-pressed="false">Flyers &amp; supports imprimés</button>
+                <button type="button" class="chips__opt" aria-pressed="false">Newsletter</button>
+                <button type="button" class="chips__opt" aria-pressed="false">Photos produits &amp; retouche</button>
+                <button type="button" class="chips__opt" aria-pressed="false">Vidéo &amp; publicité</button>
+                <button type="button" class="chips__opt" aria-pressed="false">QR codes &amp; carte avis Google</button>
+                <button type="button" class="chips__opt" aria-pressed="false">Optimisation réseaux sociaux</button>
+                <button type="button" class="chips__opt" aria-pressed="false">Je ne sais pas encore</button>
+                <button type="button" class="chips__opt chips__opt--autre" aria-pressed="false" data-autre>Autre…</button>
+              </div>
+              <div class="chips__autre" hidden>
+                <input type="text" id="autreServices" placeholder="Précisez la prestation qu'il vous faut…" maxlength="140" aria-label="Autre prestation — précisez" />
+              </div>
+              <input type="hidden" name="Prestations" id="valServices" />
+            </div>
+
+            <div class="field field--full">
+              <span class="lbl">Objectif principal <span class="req">*</span></span>
+              <p class="hint">Deux choix maximum — ce que le projet doit changer en priorité.</p>
+              <div class="chips" id="chipsGoals" data-max="2" role="group" aria-label="Objectif principal">
+                <button type="button" class="chips__opt" aria-pressed="false">Être trouvé localement (Google, avis)</button>
+                <button type="button" class="chips__opt" aria-pressed="false">Crédibiliser mon activité</button>
+                <button type="button" class="chips__opt" aria-pressed="false">Attirer de nouveaux clients</button>
+                <button type="button" class="chips__opt" aria-pressed="false">Faciliter la prise de rendez-vous</button>
+                <button type="button" class="chips__opt" aria-pressed="false">Fidéliser ma clientèle</button>
+                <button type="button" class="chips__opt" aria-pressed="false">Lancer mon activité</button>
+                <button type="button" class="chips__opt" aria-pressed="false">Moderniser mon image</button>
+                <button type="button" class="chips__opt chips__opt--autre" aria-pressed="false" data-autre>Autre…</button>
+              </div>
+              <div class="chips__autre" hidden>
+                <input type="text" id="autreGoals" placeholder="Précisez votre objectif…" maxlength="140" aria-label="Autre objectif — précisez" />
+              </div>
+              <input type="hidden" name="Objectifs" id="valGoals" />
+            </div>
+
+            <div class="field field--full">
+              <span class="lbl">Budget envisagé</span>
+              <p class="hint">Glissez les poignées pour définir la fourchette qui vous convient — un abonnement mensuel est possible pour lisser l'investissement.</p>
+              <div class="range-slider" id="budgetSlider">
+                <div class="range-slider__head">
+                  <span class="range-slider__value" id="budgetMinLbl">200 €</span>
+                  <span class="range-slider__sep">→</span>
+                  <span class="range-slider__value" id="budgetMaxLbl">1 200 €</span>
+                </div>
+                <div class="range-slider__track">
+                  <div class="range-slider__fill" id="budgetFill"></div>
+                  <input type="range" id="budgetMin" min="0" max="2000" step="50" value="200" aria-label="Budget minimum" />
+                  <input type="range" id="budgetMax" min="0" max="2000" step="50" value="1200" aria-label="Budget maximum" />
+                </div>
+                <div class="range-slider__scale">
+                  <span>0 €</span><span>500 €</span><span>1 000 €</span><span>1 500 €</span><span>2 000 €+</span>
+                </div>
+              </div>
+              <input type="hidden" name="Budget" id="budget" />
+            </div>
+
+            <div class="field field--full">
+              <span class="lbl">Vous disposez déjà de…</span>
+              <div class="checks-grid" id="checksAssets">
+                <label class="check"><input type="checkbox" value="Un logo" /><span>Un logo</span></label>
+                <label class="check"><input type="checkbox" value="Une charte graphique" /><span>Une charte graphique</span></label>
+                <label class="check"><input type="checkbox" value="Des photos de qualité" /><span>Des photos de qualité</span></label>
+                <label class="check"><input type="checkbox" value="Des textes prêts" /><span>Des textes prêts à l'emploi</span></label>
+                <label class="check"><input type="checkbox" value="Un site existant" /><span>Un site existant (refonte)</span></label>
+                <label class="check"><input type="checkbox" value="Rien — on part de zéro" /><span>Rien de tout ça — on part de zéro</span></label>
+              </div>
+              <input type="hidden" name="Existant" id="valAssets" />
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- ============ ÉTAPE 3 — DIRECTION ARTISTIQUE ============ -->
+        <fieldset class="panel" data-step="3" data-title="Direction artistique">
+          <div class="panel__head">
+            <span class="eyebrow">03 — L'univers</span>
+            <h2 class="panel__title">Quelle allure pour votre marque&nbsp;?</h2>
+            <p class="panel__sub">Pas besoin d'être designer : choisissez ce qui vous parle, nous traduisons. Tout ici est optionnel — mais chaque indice affine la première proposition.</p>
+          </div>
+
+          <div class="form__grid">
+            <div class="field field--full">
+              <span class="lbl">Ambiance recherchée</span>
+              <p class="hint">Trois choix maximum — l'impression que vos clients doivent ressentir.</p>
+              <div class="chips" id="chipsMood" data-max="3" role="group" aria-label="Ambiance recherchée">
+                <button type="button" class="chips__opt" aria-pressed="false">Élégant &amp; raffiné</button>
+                <button type="button" class="chips__opt" aria-pressed="false">Moderne &amp; épuré</button>
+                <button type="button" class="chips__opt" aria-pressed="false">Chaleureux &amp; humain</button>
+                <button type="button" class="chips__opt" aria-pressed="false">Audacieux &amp; coloré</button>
+                <button type="button" class="chips__opt" aria-pressed="false">Sobre &amp; professionnel</button>
+                <button type="button" class="chips__opt" aria-pressed="false">Naturel &amp; artisanal</button>
+                <button type="button" class="chips__opt" aria-pressed="false">Luxueux &amp; exclusif</button>
+                <button type="button" class="chips__opt" aria-pressed="false">Dynamique &amp; énergique</button>
+                <button type="button" class="chips__opt" aria-pressed="false">Doux &amp; rassurant</button>
+                <button type="button" class="chips__opt" aria-pressed="false">Brut &amp; authentique</button>
+                <button type="button" class="chips__opt chips__opt--autre" aria-pressed="false" data-autre>Autre…</button>
+              </div>
+              <div class="chips__autre" hidden>
+                <input type="text" id="autreMood" placeholder="Décrivez l'ambiance avec vos mots…" maxlength="140" aria-label="Autre ambiance — précisez" />
+              </div>
+              <input type="hidden" name="Ambiance" id="valMood" />
+            </div>
+
+            <div class="field field--full">
+              <span class="lbl">Univers de couleurs</span>
+              <p class="hint">Deux choix maximum — une tendance, pas un engagement définitif.</p>
+              <div class="palettes" id="palettes" data-max="2" role="group" aria-label="Univers de couleurs">
+                <button type="button" class="palette" aria-pressed="false" data-name="Crème, navy & orange (signature)">
+                  <span class="palette__check">✓</span>
+                  <span class="palette__swatches"><span style="background:#EFE7D3"></span><span style="background:#1A0089"></span><span style="background:#D4633F"></span></span>
+                  <span class="palette__name">Signature</span>
+                  <span class="palette__desc">Crème, bleu profond, orange — chic et affirmé.</span>
+                </button>
+                <button type="button" class="palette" aria-pressed="false" data-name="Minéral — pierre, noir & blanc cassé">
+                  <span class="palette__check">✓</span>
+                  <span class="palette__swatches"><span style="background:#F5F4F0"></span><span style="background:#2B2B28"></span><span style="background:#A6A296"></span></span>
+                  <span class="palette__name">Minéral</span>
+                  <span class="palette__desc">Pierre, noir, blanc cassé — sobre et intemporel.</span>
+                </button>
+                <button type="button" class="palette" aria-pressed="false" data-name="Nature — sauge, terracotta & lin">
+                  <span class="palette__check">✓</span>
+                  <span class="palette__swatches"><span style="background:#F0EAD9"></span><span style="background:#7A8B6F"></span><span style="background:#C97B4A"></span></span>
+                  <span class="palette__name">Nature</span>
+                  <span class="palette__desc">Sauge, terracotta, lin — organique et artisanal.</span>
+                </button>
+                <button type="button" class="palette" aria-pressed="false" data-name="Nuit & or — noir profond, doré & ivoire">
+                  <span class="palette__check">✓</span>
+                  <span class="palette__swatches"><span style="background:#141414"></span><span style="background:#C9A227"></span><span style="background:#F4EFE4"></span></span>
+                  <span class="palette__name">Nuit &amp; or</span>
+                  <span class="palette__desc">Noir profond, doré, ivoire — luxe assumé.</span>
+                </button>
+                <button type="button" class="palette" aria-pressed="false" data-name="Horizon — bleu, blanc & corail">
+                  <span class="palette__check">✓</span>
+                  <span class="palette__swatches"><span style="background:#F4F7FB"></span><span style="background:#3B6FB6"></span><span style="background:#E2725B"></span></span>
+                  <span class="palette__name">Horizon</span>
+                  <span class="palette__desc">Bleu, blanc, corail — frais et confiant.</span>
+                </button>
+                <button type="button" class="palette" aria-pressed="false" data-name="Poudré — rose, crème & cacao">
+                  <span class="palette__check">✓</span>
+                  <span class="palette__swatches"><span style="background:#FBF6EE"></span><span style="background:#E8C4B8"></span><span style="background:#5C4033"></span></span>
+                  <span class="palette__name">Poudré</span>
+                  <span class="palette__desc">Rose poudré, crème, cacao — doux et lumineux.</span>
+                </button>
+                <button type="button" class="palette palette--autre" aria-pressed="false" data-autre data-autre-label="Palette personnalisée" id="paletteAutre">
+                  <span class="palette__check">✓</span>
+                  <span class="palette__wheel-ico" aria-hidden="true"></span>
+                  <span class="palette__name">Autre</span>
+                  <span class="palette__desc">Composez votre propre palette à la roue chromatique.</span>
+                </button>
+              </div>
+
+              <!-- Atelier : roue chromatique -->
+              <div class="chips__autre" id="wheelWrap" hidden>
+                <div class="wheel-box">
+                  <div class="wheel-box__grid">
+                    <div class="wheel" id="wheel" role="application" aria-label="Roue chromatique — cliquez pour choisir une couleur">
+                      <div class="wheel__cursor" id="wheelCursor"></div>
+                    </div>
+                    <div class="wheel-box__ctrl">
+                      <div class="wheel-box__preview">
+                        <span class="pastille" id="wheelPreview"></span>
+                        <code id="wheelHex">#D4633F</code>
+                      </div>
+                      <label class="wheel-box__lum">
+                        <span class="caption">Luminosité</span>
+                        <input type="range" id="wheelLum" min="12" max="92" value="54" />
+                      </label>
+                      <button type="button" class="btn btn--outline wheel-box__add" id="wheelAdd">Ajouter cette couleur <span class="arr">+</span></button>
+                    </div>
+                  </div>
+                  <div class="wheel-box__swatches" id="wheelSwatches"></div>
+                  <p class="hint">Jusqu'à 5 couleurs — cliquez sur la roue, ajustez la luminosité, puis ajoutez-la à votre palette.</p>
+                </div>
+                <input type="hidden" id="autreColors" />
+              </div>
+              <input type="hidden" name="Univers de couleurs" id="valPalettes" />
+            </div>
+
+            <div class="field field--full">
+              <label for="couleurs">Couleurs imposées ou à éviter <span class="opt">(optionnel)</span></label>
+              <input type="text" id="couleurs" name="Couleurs imposées ou à éviter" placeholder="Ex. garder le vert de mon logo · surtout pas de rose" />
+            </div>
+
+            <div class="field field--full">
+              <span class="lbl">Style typographique</span>
+              <div class="cards-radio" role="radiogroup" aria-label="Style typographique">
+                <label class="card-radio">
+                  <input type="radio" name="Style typographique" value="Classique — serif élégante" />
+                  <span class="card-radio__bd">
+                    <span class="card-radio__check">✓</span>
+                    <span class="card-radio__name">Classique</span>
+                    <span class="card-radio__sample card-radio__sample--serif">Héritage</span>
+                    <span class="card-radio__desc">Serif élégante — tradition, raffinement, confiance.</span>
+                  </span>
+                </label>
+                <label class="card-radio">
+                  <input type="radio" name="Style typographique" value="Moderne — sans-serif épurée" />
+                  <span class="card-radio__bd">
+                    <span class="card-radio__check">✓</span>
+                    <span class="card-radio__name">Moderne</span>
+                    <span class="card-radio__sample card-radio__sample--sans">Clarté</span>
+                    <span class="card-radio__desc">Sans-serif épurée — netteté, efficacité, présent.</span>
+                  </span>
+                </label>
+                <label class="card-radio">
+                  <input type="radio" name="Style typographique" value="Caractère — italique expressive" />
+                  <span class="card-radio__bd">
+                    <span class="card-radio__check">✓</span>
+                    <span class="card-radio__name">Caractère</span>
+                    <span class="card-radio__sample card-radio__sample--display">Signature</span>
+                    <span class="card-radio__desc">Italique expressive — personnalité, geste, émotion.</span>
+                  </span>
+                </label>
+                <label class="card-radio">
+                  <input type="radio" name="Style typographique" value="Je vous laisse choisir" />
+                  <span class="card-radio__bd">
+                    <span class="card-radio__check">✓</span>
+                    <span class="card-radio__name">Carte blanche</span>
+                    <span class="card-radio__sample card-radio__sample--serif">À vous de jouer<span style="color:var(--orange)">.</span></span>
+                    <span class="card-radio__desc">Je vous fais confiance pour trancher.</span>
+                  </span>
+                </label>
+              </div>
+            </div>
+
+            <div class="field field--full">
+              <label for="refs">Références qui vous plaisent <span class="opt">(sites, marques, comptes Instagram…)</span></label>
+              <textarea id="refs" name="Références" rows="4" placeholder="Ex. le site de…, la devanture de…, ce compte Instagram… — et surtout : ce que vous aimez chez eux (couleurs, simplicité, photos…)"></textarea>
+            </div>
+
+            <div class="field field--full">
+              <label for="eviter">Ce qu'il faut éviter absolument <span class="opt">(optionnel)</span></label>
+              <textarea id="eviter" name="À éviter" rows="3" style="min-height:96px" placeholder="Styles, couleurs, ambiances ou clichés que vous ne voulez surtout pas voir."></textarea>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- ============ ÉTAPE 4 — FINALISATION ============ -->
+        <fieldset class="panel" data-step="4" data-title="Finalisation">
+          <div class="panel__head">
+            <span class="eyebrow">04 — Le mot de la fin</span>
+            <h2 class="panel__title">Un dernier détail&nbsp;?</h2>
+            <p class="panel__sub">Racontez ce que les cases n'ont pas su capturer, joignez vos inspirations, et vérifiez votre brief avant l'envol.</p>
+          </div>
+
+          <div class="form__grid">
+            <div class="field field--full">
+              <label for="desc">Votre projet, avec vos mots</label>
+              <textarea id="desc" name="Description libre" rows="6" placeholder="Votre histoire, vos clients, ce qui vous différencie, ce dont vous rêvez pour votre image… Plus c'est vous, mieux c'est."></textarea>
+            </div>
+
+            <div class="field field--full">
+              <span class="lbl">Inspirations &amp; documents <span class="opt">(jusqu'à 5 fichiers, 10 Mo max chacun)</span></span>
+              <div class="drop" id="drop">
+                <strong>Glissez vos fichiers ici</strong> ou cliquez pour parcourir
+                <span class="caption">Logo · photos · inspirations — JPG, PNG, PDF</span>
+                <input type="file" id="fileInput" name="Fichiers" multiple accept="image/*,.pdf" hidden />
+                <div class="drop__list" id="dropList"></div>
+              </div>
+            </div>
+
+            <div class="field field--full">
+              <div class="recap" id="recap" aria-live="polite">
+                <p class="recap__title">Votre brief en un coup d'œil</p>
+                <dl id="recapList"></dl>
+              </div>
+            </div>
+
+            <label class="check field--full">
+              <input type="checkbox" name="RDV découverte" value="Oui" />
+              <span>J'aimerais qu'un rendez-vous découverte (visio, 30 min, offert) suive ce brief.</span>
+            </label>
+            <label class="check field--full">
+              <input type="checkbox" id="rgpd" name="Consentement RGPD" value="Accepté" required />
+              <span>J'accepte que mes données soient utilisées pour traiter cette demande. <span class="req">*</span></span>
+            </label>
+          </div>
+        </fieldset>
+
+        <!-- Erreur + navigation -->
+        <p class="form__error" id="formError"></p>
+
+        <div class="wizard__nav">
+          <button type="button" class="btn btn--outline" id="btnPrev" disabled><span class="arr">←</span> Précédent</button>
+          <button type="button" class="btn btn--orange" id="btnNext">Continuer <span class="arr">→</span></button>
+          <button type="submit" class="btn btn--orange" id="btnSubmit" hidden>Envoyer mon brief <span class="arr">→</span></button>
+        </div>
+        <p class="form__note caption">Réponse sous 48h ouvrées — sans engagement.</p>
+      </form>
+
+      <!-- État de succès -->
+      <div class="form-success" id="formSuccess">
+        <img src="../assets/logo_symbole.png" alt="" />
+        <p class="form-success__title">Merci. Votre brief est entre nos mains&nbsp;— votre projet prend déjà de l'altitude.</p>
+        <p class="form-success__body">Nous revenons vers vous sous 48h ouvrées avec une première lecture et nos recommandations.</p>
+        <img class="form-success__sym" src="../assets/logo_symbole.png" alt="" />
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- ====================== FOOTER ====================== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <img src="../assets/logo_principal.png" alt="Vecteur d'excellence" />
+        <p>Le vecteur qui propulse le visible vers le mémorable.</p>
+      </div>
+      <div class="footer__links">
+        <a href="../index.html">Retour au site</a>
+        <a href="mailto:vecteur.excellence@gmail.com">vecteur.excellence@gmail.com</a>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span class="caption">© 2026 Vecteur d'excellence — Établi en MMXXVI</span>
+      <span class="caption">Le premium accessible à toutes les ambitions</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ====================== SCRIPTS ====================== -->
+<script>
+(function(){
+  "use strict";
+
+  /* --- Nav : état scrolled ------------------------------------------- */
+  var nav = document.getElementById('nav');
+  function onScroll(){ nav.classList.toggle('scrolled', window.scrollY > 10); }
+  window.addEventListener('scroll', onScroll, { passive:true });
+  onScroll();
+
+  /* --- Wizard : navigation entre étapes ------------------------------ */
+  var form        = document.getElementById('briefForm');
+  var panels      = Array.prototype.slice.call(form.querySelectorAll('.panel'));
+  var btnPrev     = document.getElementById('btnPrev');
+  var btnNext     = document.getElementById('btnNext');
+  var btnSubmit   = document.getElementById('btnSubmit');
+  var formError   = document.getElementById('formError');
+  var fill        = document.getElementById('progressFill');
+  var stepLabel   = document.getElementById('progressStep');
+  var stepCount   = document.getElementById('progressCount');
+  var current     = 0;
+
+  function showStep(i, skipScroll){
+    panels.forEach(function(p, idx){ p.classList.toggle('active', idx === i); });
+    current = i;
+    btnPrev.disabled = (i === 0);
+    btnNext.hidden   = (i === panels.length - 1);
+    btnSubmit.hidden = (i !== panels.length - 1);
+    fill.style.width = (((i + 1) / panels.length) * 100) + '%';
+    stepLabel.textContent = panels[i].getAttribute('data-title');
+    stepCount.textContent = 'Étape ' + (i + 1) + ' / ' + panels.length;
+    hideError();
+    if(i === panels.length - 1){ buildRecap(); }
+    if(!skipScroll){
+      var top = document.getElementById('progress').getBoundingClientRect().top + window.scrollY - 100;
+      window.scrollTo({ top: top, behavior:'smooth' });
+    }
+  }
+
+  function showError(msg){ formError.textContent = msg; formError.classList.add('show'); }
+  function hideError(){ formError.classList.remove('show'); }
+
+  /* Validation par étape */
+  function validateStep(i){
+    if(i === 0){
+      var nom = document.getElementById('nom');
+      var email = document.getElementById('email');
+      var ent = document.getElementById('entreprise');
+      if(!nom.value.trim()){ nom.focus(); return 'Indiquez votre nom complet.'; }
+      if(!email.value.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)){ email.focus(); return 'Indiquez un email valide.'; }
+      if(!ent.value.trim()){ ent.focus(); return 'Indiquez le nom de votre entreprise ou activité.'; }
+    }
+    if(i === 1){
+      if(!document.getElementById('valServices').value){ return 'Sélectionnez au moins une prestation.'; }
+      if(!document.getElementById('valGoals').value){ return 'Sélectionnez au moins un objectif.'; }
+    }
+    if(i === 3){
+      if(!document.getElementById('rgpd').checked){ return 'Le consentement RGPD est nécessaire pour traiter votre demande.'; }
+    }
+    return null;
+  }
+
+  btnNext.addEventListener('click', function(){
+    var err = validateStep(current);
+    if(err){ showError(err); return; }
+    showStep(current + 1);
+  });
+  btnPrev.addEventListener('click', function(){ showStep(current - 1); });
+
+  /* Entrée = étape suivante (hors textarea) */
+  form.addEventListener('keydown', function(e){
+    if(e.key === 'Enter' && e.target.tagName !== 'TEXTAREA' && current < panels.length - 1){
+      e.preventDefault();
+      btnNext.click();
+    }
+  });
+
+  /* --- Chips : groupes à sélection multiple --------------------------- */
+  /* L'option "Autre…" (data-autre) révèle un champ texte libre ; le texte
+     saisi est fusionné dans le champ caché envoyé à Formspree. */
+  function bindChips(groupId, hiddenId, autreId){
+    var group     = document.getElementById(groupId);
+    var hidden    = document.getElementById(hiddenId);
+    var autre     = autreId ? document.getElementById(autreId) : null;
+    var autreWrap = autre ? autre.closest('.chips__autre') : null;
+    var max       = parseInt(group.getAttribute('data-max') || '0', 10);
+
+    function refresh(){
+      var vals = Array.prototype.map.call(group.querySelectorAll('[aria-pressed="true"]'), function(b){
+        if(b.hasAttribute('data-autre')){
+          var t = autre ? autre.value.trim() : '';
+          var label = b.getAttribute('data-autre-label') || 'Autre';
+          return t ? label + ' : ' + t : label;
+        }
+        return b.getAttribute('data-name') || b.textContent.trim();
+      });
+      hidden.value = vals.join(' · ');
+    }
+
+    group.addEventListener('click', function(e){
+      var btn = e.target.closest('.chips__opt, .palette');
+      if(!btn) return;
+      var pressed = btn.getAttribute('aria-pressed') === 'true';
+      if(!pressed && max){
+        var count = group.querySelectorAll('[aria-pressed="true"]').length;
+        if(count >= max){
+          showError('Maximum ' + max + ' choix pour cette question — désélectionnez-en un d’abord.');
+          return;
+        }
+      }
+      hideError();
+      btn.setAttribute('aria-pressed', pressed ? 'false' : 'true');
+      if(btn.hasAttribute('data-autre') && autreWrap){
+        autreWrap.hidden = pressed;          /* devient visible si on vient de sélectionner */
+        if(pressed){ autre.value = ''; }
+        else{ autre.focus(); }
+      }
+      refresh();
+    });
+    if(autre){ autre.addEventListener('input', refresh); }
+  }
+  bindChips('chipsServices', 'valServices', 'autreServices');
+  bindChips('chipsGoals',    'valGoals',    'autreGoals');
+  bindChips('chipsMood',     'valMood',     'autreMood');
+  bindChips('palettes',      'valPalettes', 'autreColors');
+
+  /* --- Roue chromatique : palette personnalisée ------------------------ */
+  (function(){
+    var card     = document.getElementById('paletteAutre');
+    var wheel    = document.getElementById('wheel');
+    var cursor   = document.getElementById('wheelCursor');
+    var lum      = document.getElementById('wheelLum');
+    var preview  = document.getElementById('wheelPreview');
+    var hexLabel = document.getElementById('wheelHex');
+    var addBtn   = document.getElementById('wheelAdd');
+    var swatches = document.getElementById('wheelSwatches');
+    var hidden   = document.getElementById('autreColors');
+    var MAX_COLORS = 5;
+    var hue = 19, sat = 56;            /* départ : proche du Portland Orange */
+    var colors = [];
+
+    function hslToHex(h, s, l){
+      s /= 100; l /= 100;
+      var a = s * Math.min(l, 1 - l);
+      function f(n){
+        var k = (n + h / 30) % 12;
+        var c = l - a * Math.max(-1, Math.min(k - 3, Math.min(9 - k, 1)));
+        return Math.round(255 * c).toString(16).padStart(2, '0');
+      }
+      return ('#' + f(0) + f(8) + f(4)).toUpperCase();
+    }
+    function currentHex(){ return hslToHex(hue, sat, parseInt(lum.value, 10)); }
+    function paintPreview(){
+      var hx = currentHex();
+      preview.style.background = hx;
+      cursor.style.background  = hx;
+      hexLabel.textContent     = hx;
+    }
+    function placeCursor(){
+      var R = wheel.clientWidth / 2;
+      if(!R) return;                              /* roue masquée */
+      var rad = hue * Math.PI / 180;              /* 0° en haut, sens horaire */
+      var r = (sat / 100) * (R - 10);
+      cursor.style.left = (R + r * Math.sin(rad)) + 'px';
+      cursor.style.top  = (R - r * Math.cos(rad)) + 'px';
+    }
+    function pick(e){
+      var rect = wheel.getBoundingClientRect();
+      var R  = rect.width / 2;
+      var dx = e.clientX - (rect.left + R);
+      var dy = e.clientY - (rect.top  + R);
+      hue = (Math.atan2(dx, -dy) * 180 / Math.PI + 360) % 360;
+      sat = Math.min(100, Math.sqrt(dx * dx + dy * dy) / (R - 10) * 100);
+      placeCursor(); paintPreview();
+    }
+
+    var dragging = false;
+    wheel.addEventListener('pointerdown', function(e){
+      dragging = true;
+      try{ wheel.setPointerCapture(e.pointerId); }catch(err){ /* pointeur synthétique */ }
+      pick(e);
+    });
+    wheel.addEventListener('pointermove', function(e){ if(dragging) pick(e); });
+    wheel.addEventListener('pointerup',   function(){ dragging = false; });
+    lum.addEventListener('input', paintPreview);
+
+    function sync(){
+      hidden.value = colors.join(', ');
+      hidden.dispatchEvent(new Event('input', { bubbles:true }));
+    }
+    function renderSwatches(){
+      swatches.innerHTML = '';
+      colors.forEach(function(hx, idx){
+        var chip = document.createElement('span');
+        chip.className = 'wheel-swatch';
+        var dot = document.createElement('i'); dot.style.background = hx;
+        var txt = document.createElement('span'); txt.textContent = hx;
+        var del = document.createElement('button');
+        del.type = 'button'; del.textContent = '×';
+        del.setAttribute('aria-label', 'Retirer la couleur ' + hx);
+        del.addEventListener('click', function(){
+          colors.splice(idx, 1);
+          renderSwatches(); sync();
+        });
+        chip.appendChild(dot); chip.appendChild(txt); chip.appendChild(del);
+        swatches.appendChild(chip);
+      });
+    }
+
+    addBtn.addEventListener('click', function(){
+      var hx = currentHex();
+      if(colors.indexOf(hx) !== -1){ showError('Cette couleur est déjà dans votre palette.'); return; }
+      if(colors.length >= MAX_COLORS){ showError('Votre palette est complète (' + MAX_COLORS + ' couleurs maximum).'); return; }
+      hideError();
+      colors.push(hx);
+      renderSwatches(); sync();
+    });
+
+    /* À l'ouverture : positionner le curseur (la roue vient d'apparaître).
+       À la fermeture : vider la palette composée. */
+    card.addEventListener('click', function(){
+      var wasPressed = card.getAttribute('aria-pressed') === 'true';
+      setTimeout(function(){
+        var isPressed = card.getAttribute('aria-pressed') === 'true';
+        if(isPressed && !wasPressed){ placeCursor(); paintPreview(); }
+        if(!isPressed && wasPressed){ colors = []; renderSwatches(); }
+      }, 0);
+    });
+
+    paintPreview();
+  })();
+
+  /* --- Curseur de fourchette (budget) -------------------------------- */
+  (function(){
+    var min = document.getElementById('budgetMin');
+    var max = document.getElementById('budgetMax');
+    var fill = document.getElementById('budgetFill');
+    var lblMin = document.getElementById('budgetMinLbl');
+    var lblMax = document.getElementById('budgetMaxLbl');
+    var hidden = document.getElementById('budget');
+    var MAX = parseInt(max.max, 10);
+
+    function fmt(v){
+      v = parseInt(v, 10);
+      var s = v.toLocaleString('fr-FR') + ' €';
+      return v >= MAX ? s + '+' : s;
+    }
+    function refresh(){
+      var a = parseInt(min.value, 10), b = parseInt(max.value, 10);
+      if(a > b){ /* on prend le tag actif comme contrainte */
+        if(document.activeElement === min){ max.value = a; b = a; }
+        else { min.value = b; a = b; }
+      }
+      lblMin.textContent = fmt(a);
+      lblMax.textContent = fmt(b);
+      fill.style.left  = (a / MAX * 100) + '%';
+      fill.style.right = (100 - b / MAX * 100) + '%';
+      hidden.value = fmt(a) + ' – ' + fmt(b);
+    }
+    min.addEventListener('input', refresh);
+    max.addEventListener('input', refresh);
+    refresh();
+  })();
+
+  /* Checkboxes "Existant" → champ caché */
+  var checksAssets = document.getElementById('checksAssets');
+  var valAssets    = document.getElementById('valAssets');
+  checksAssets.addEventListener('change', function(){
+    var vals = Array.prototype.map.call(checksAssets.querySelectorAll('input:checked'), function(c){ return c.value; });
+    valAssets.value = vals.join(' · ');
+  });
+
+  /* --- Upload drag & drop --------------------------------------------- */
+  var drop      = document.getElementById('drop');
+  var fileInput = document.getElementById('fileInput');
+  var dropList  = document.getElementById('dropList');
+  var MAX_FILES = 5, MAX_SIZE = 10 * 1024 * 1024;
+
+  function syncFiles(files){
+    var dt = new DataTransfer();
+    Array.prototype.slice.call(files, 0, MAX_FILES).forEach(function(f){
+      if(f.size <= MAX_SIZE){ dt.items.add(f); }
+    });
+    fileInput.files = dt.files;
+    renderFiles();
+  }
+  function renderFiles(){
+    dropList.innerHTML = '';
+    Array.prototype.forEach.call(fileInput.files, function(f, idx){
+      var row = document.createElement('div');
+      row.className = 'drop__file';
+      var name = document.createElement('span');
+      name.textContent = f.name + ' — ' + (f.size / 1024 / 1024).toFixed(1) + ' Mo';
+      var del = document.createElement('button');
+      del.type = 'button'; del.setAttribute('aria-label', 'Retirer ' + f.name); del.textContent = '×';
+      del.addEventListener('click', function(ev){
+        ev.stopPropagation();
+        var dt = new DataTransfer();
+        Array.prototype.forEach.call(fileInput.files, function(g, j){ if(j !== idx) dt.items.add(g); });
+        fileInput.files = dt.files;
+        renderFiles();
+      });
+      row.appendChild(name); row.appendChild(del);
+      dropList.appendChild(row);
+    });
+  }
+  drop.addEventListener('click', function(e){ if(e.target.tagName !== 'BUTTON') fileInput.click(); });
+  fileInput.addEventListener('change', function(){ syncFiles(fileInput.files); });
+  ['dragenter','dragover'].forEach(function(ev){
+    drop.addEventListener(ev, function(e){ e.preventDefault(); drop.classList.add('drag'); });
+  });
+  ['dragleave','drop'].forEach(function(ev){
+    drop.addEventListener(ev, function(e){ e.preventDefault(); drop.classList.remove('drag'); });
+  });
+  drop.addEventListener('drop', function(e){
+    var merged = Array.prototype.slice.call(fileInput.files).concat(Array.prototype.slice.call(e.dataTransfer.files));
+    syncFiles(merged);
+  });
+
+  /* --- Récapitulatif ---------------------------------------------------- */
+  function buildRecap(){
+    var list = document.getElementById('recapList');
+    var rows = [
+      ['Contact',      [document.getElementById('nom').value, document.getElementById('entreprise').value].filter(Boolean).join(' — ')],
+      ['Métier',       document.getElementById('metier').value],
+      ['Prestations',  document.getElementById('valServices').value],
+      ['Objectifs',    document.getElementById('valGoals').value],
+      ['Budget',       document.getElementById('budget').value],
+      ['Ambiance',     document.getElementById('valMood').value],
+      ['Couleurs',     document.getElementById('valPalettes').value],
+      ['Typographie',  (form.querySelector('input[name="Style typographique"]:checked') || {}).value || '']
+    ];
+    list.innerHTML = '';
+    rows.forEach(function(r){
+      var dt = document.createElement('dt'); dt.textContent = r[0];
+      var dd = document.createElement('dd');
+      if(r[1]){ dd.textContent = r[1]; }
+      else{ var em = document.createElement('em'); em.textContent = 'Non précisé'; dd.appendChild(em); }
+      list.appendChild(dt); list.appendChild(dd);
+    });
+  }
+
+  /* --- Soumission (AJAX Formspree) -------------------------------------- */
+  var success = document.getElementById('formSuccess');
+  function showSuccess(){
+    form.style.display = 'none';
+    document.getElementById('progress').style.display = 'none';
+    success.classList.add('show');
+    window.scrollTo({ top: 0, behavior:'smooth' });
+  }
+
+  form.addEventListener('submit', function(e){
+    var err = validateStep(3);
+    if(err){ e.preventDefault(); showError(err); return; }
+    /* On renseigne _next dynamiquement avec l'URL actuelle + ?sent=1.
+       FormSubmit redirigera l'utilisateur vers cette URL après réception ;
+       le handler de chargement plus bas détecte ?sent=1 et affiche l'écran
+       de succès en local — pas besoin de page « merci » dédiée. */
+    var nextInput = form.querySelector('input[name="_next"]');
+    if(nextInput){ nextInput.value = location.origin + location.pathname + '?sent=1'; }
+    btnSubmit.disabled = true;
+    btnSubmit.innerHTML = 'Envoi en cours…';
+    /* Pas de e.preventDefault() ici : le navigateur poste nativement à
+       FormSubmit (multipart/form-data avec pièces jointes). */
+  });
+
+  /* Retour depuis FormSubmit → affichage de l'écran de remerciement. */
+  if(new URLSearchParams(location.search).has('sent')){
+    showSuccess();
+    history.replaceState(null, '', location.pathname);
+  }
+
+  showStep(0, true);
+})();
+</script>
+
+</body>
+</html>
