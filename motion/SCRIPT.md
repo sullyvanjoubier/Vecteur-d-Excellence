@@ -33,3 +33,18 @@ python3 render.py v <dossier_images>      # ou h
 python3 audio.py <dossier_audio>
 ffmpeg -f concat -safe 0 -i <dossier_images>/frames.txt -i <dossier_audio>/soundtrack_68s.wav ... (voir build.sh)
 ```
+
+---
+# Version dynamique (40 s) — `video2.html`, `audio2.py`
+Même texte, rythme x1,7 : 120 BPM, une coupe ou un mot toutes les 0,5 à 1 s, photos réelles (Unsplash, voir CREDITS.md).
+| Temps | Scène |
+|---|---|
+| 0,0–2,5 | « Invisible. » claque, puis disparaît lettre par lettre |
+| 2,5–8,8 | artisan (photo plein cadre) puis recherche sur mobile ; barres bleues, mots un par un, « de vous. » sur barre orange |
+| 8,5–15,5 | trois photos, trois lignes qui s'empilent (3e en orange) |
+| 15,5 | **coupe sèche en bleu + son grave** ; « On ne vous compare pas à vos concurrents. » + 3 vitrines |
+| 19,5–23,0 | « On vous compare à ce qu'on voit d'eux. » |
+| 23,0–31,0 | quatre lignes, quatre photos, règles orange qui se tracent |
+| 31,0–36,5 | balayage crème, « Votre métier mérite mieux qu'un résultat de recherche. » |
+| 36,5–40,0 | signature |
+Régénération : `render2.py <v|h> <dossier>`, `audio2.py <dossier>`, puis ffmpeg comme dans build.sh.

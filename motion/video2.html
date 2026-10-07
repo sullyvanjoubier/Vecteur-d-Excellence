@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Invisible — version dynamique</title>
+<style>
+@font-face{font-family:CG;src:url(fonts/CormorantGaramond.ttf);font-weight:300 700;font-style:normal}
+@font-face{font-family:CG;src:url(fonts/CormorantGaramond-Italic.ttf);font-weight:300 700;font-style:italic}
+@font-face{font-family:IN;src:url(fonts/Inter-Medium.otf);font-weight:500}
+html,body{margin:0;padding:0;background:#EFE7D3;overflow:hidden}
+#stage{position:absolute;left:0;top:0;overflow:hidden;background:#EFE7D3}
+#stage *{box-sizing:border-box}
+.abs{position:absolute}
+.serif{font-family:CG,serif;font-weight:500;letter-spacing:-0.015em;font-kerning:normal}
+.sans{font-family:IN,sans-serif;font-weight:500;letter-spacing:-0.008em;font-kerning:normal}
+.row{display:inline-block;white-space:nowrap;position:relative}
+.w{display:inline-block}
+.ph{overflow:hidden}
+.ph img{position:absolute;left:0;top:0;width:100%;height:100%;object-fit:cover}
+.ph .tint{position:absolute;inset:0;background:#1A0089}
+</style>
+</head>
+<body>
+<div id="stage"></div>
+<script>
+/* ============================================================
+   VECTEUR D'EXCELLENCE — « Invisible. » — version dynamique
+   120 BPM : 1 temps = 0,5 s. Le temps est piloté par render(t).
+   ?f=v (9:16, 1080×1920)  |  ?f=h (16:9, 1920×1080)
+   ============================================================ */
+const F = new URLSearchParams(location.search).get('f') === 'h' ? 'h' : 'v';
+const V = F === 'v';
+const C = {cream:'#EFE7D3', navy:'#1A0089', orange:'#D4633F', ink:'#1F1F1F'};
+const W = V ? 1080 : 1920, H = V ? 1920 : 1080, M = V ? 96 : 160;
+const stage = document.getElementById('stage');
+stage.style.width = W+'px'; stage.style.height = H+'px';
+const T_END = 40.0;
+
+const clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const easeOut=x=>1-Math.pow(1-clamp(x),3);
+const easeIO=x=>{x=clamp(x);return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2};
+const easeBack=x=>{x=clamp(x);const c1=1.9,c3=c1+1;return 1+c3*Math.pow(x-1,3)+c1*Math.pow(x-1,2)};
+const r3=x=>Math.round(x*1000)/1000;
+function mk(tag,cls,parent=stage){const e=document.createElement(tag);e.className=cls||'';parent.appendChild(e);return e}
+const OBJ=[];
+const ph = p=>'photos/'+p+'.jpg';
+
+/* ---------- briques ---------- */
+/* Rectangle plein (fond, panneau) — entrée par balayage */
+function Rect({x,y,w,h,color,tIn,tOut=1e9,anim='none',dur=.3}){
+  const e=mk('div','abs'); e.style.cssText+=`left:${x}px;top:${y}px;width:${w}px;height:${h}px;background:${color}`;
+  OBJ.push({apply(t){
+    if(t<tIn-1e-6||t>=tOut){e.style.display='none';return 'x'}
+    e.style.display='block'; const p=easeOut((t-tIn)/dur);
+    let tr='none';
+    if(anim==='up') tr=`translateY(${r3((1-p)*(H-y))}px)`;
+    if(anim==='left') tr=`translateX(${r3(-(1-p)*(x+w))}px)`;
+    if(anim==='right') tr=`translateX(${r3((1-p)*(W-x))}px)`;
+    e.style.transform=tr; return r3(p)+'';
+  }});
+}
+/* Photo réelle : balayage d'entrée + mouvement continu (Ken Burns) + voile bleu de marque */
+function Photo({src,x,y,w,h,tIn,tOut,wipe='up',kb=[1.06,1.18],fx=.5,fy=.5,dur=.34,tint=.14}){
+  const e=mk('div','abs ph'); e.style.cssText+=`left:${x}px;top:${y}px;width:${w}px;height:${h}px`;
+  const im=mk('img','',e); im.src=ph(src); im.style.objectPosition=`${fx*100}% ${fy*100}%`; im.style.transformOrigin=`${fx*100}% ${fy*100}%`;
+  const tn=mk('div','tint',e); tn.style.opacity=tint;
+  OBJ.push({apply(t){
+    if(t<tIn-1e-6||t>=tOut){e.style.display='none';return 'x'}
+    e.style.display='block'; const p=easeOut((t-tIn)/dur), q=(1-p)*100;
+    const clip={up:`inset(${q}% 0 0 0)`,down:`inset(0 0 ${q}% 0)`,left:`inset(0 ${q}% 0 0)`,right:`inset(0 0 0 ${q}%)`,none:'none'}[wipe];
+    e.style.clipPath=clip;
+    const s=kb[0]+(kb[1]-kb[0])*clamp((t-tIn)/(tOut-tIn));
+    im.style.transform=`scale(${s.toFixed(5)})`;
+    return clip+s.toFixed(4);
+  }});
+}
+/* Règle qui se trace (horizontale ou verticale) */
+function Rule({x,y,w,h=3,color,tIn,dur=.4,tOut=1e9,vertical=false}){
+  const e=mk('div','abs'); e.style.cssText+=`left:${x}px;top:${y}px;width:${w}px;height:${h}px;background:${color};transform-origin:${vertical?'50% 0':'0 50%'}`;
+  OBJ.push({apply(t){
+    if(t<tIn-1e-6||t>=tOut){e.style.display='none';return 'x'}
+    e.style.display='block'; const p=easeIO((t-tIn)/dur);
+    e.style.transform=vertical?`scaleY(${r3(p)})`:`scaleX(${r3(p)})`; return r3(p)+'';
+  }});
+}
+/* Ligne de texte : les mots claquent un par un, barre de couleur optionnelle */
+function Line({txt,size,cls,color,x,y,align='left',bar=null,padX=26,padY=10,at,stagger=.14,tOut=1e9,exit='cut',italic=false,lh=1.1}){
+  const root=mk('div','abs'); root.style.cssText+=`top:${y}px;`;
+  let barEl=null; if(bar){barEl=mk('div','abs',root); barEl.style.cssText+=`left:0;top:0;right:0;bottom:0;background:${bar};transform-origin:0 50%`}
+  const row=mk('div','row '+cls,root); row.style.cssText+=`font-size:${size}px;line-height:${lh};color:${color};padding:${bar?padY:0}px ${bar?padX:0}px;${italic?'font-style:italic;':''}`;
+  const ws=txt.split(' ').map((t,k,a)=>{const s=mk('span','w',row);s.textContent=t;if(k<a.length-1)row.appendChild(document.createTextNode(' '));return s});
+  const wd=row.getBoundingClientRect().width;
+  root.style.left=(align==='center'?x-wd/2:x)+'px'; root.style.width=wd+'px';
+  OBJ.push({apply(t){
+    if(t<at-.06||t>=tOut+(exit==='slide'?.22:0)){root.style.display='none';return 'x'}
+    root.style.display='block'; let sig='';
+    const eo=exit==='slide'?easeIO((t-tOut)/.2):0;
+    root.style.transform=eo>0?`translateX(${r3(-eo*140)}px)`:'none'; root.style.opacity=r3(1-eo);
+    if(barEl){const b=easeOut((t-(at-.05))/.22); barEl.style.transform=`scaleX(${r3(b)})`; sig+=r3(b)}
+    ws.forEach((s,k)=>{const pt=(t-(at+k*stagger))/.2, p=easeBack(pt);
+      const o=clamp(pt*6); s.style.opacity=r3(o); s.style.transform=`translateY(${r3((1-p)*38)}px) scale(${r3(1+(1-p)*.1)})`; sig+=r3(o)+','+r3(p)+';'});
+    return sig+r3(eo);
+  }});
+}
+
+/* ---------- mise en page par format ---------- */
+const L = V ? {
+  heroY:1000, ruleY:640,
+  s2:{x:M, y1:1190, y2:1330, size:90},
+  s3:{ph:[0,0,W,1000], panel:[0,1000,W,H-1000], ruleY:1000, x:M, y:[1088,1228,1368], size:86, lh2:104},
+  s4:{x:M, y1:230, y2:344, size:96, tiles:{x:M,y:610,w:288,h:880,gap:12}, ruleY:500},
+  s5:{ph:[0,0,W,980], ruleY:980, x:M, y0:1056, pitch:176, size:70, rule:150},
+  s6:{ph:[0,0,W,1020], ruleY:1020, cx:W/2, y0:1130, lh:121, size:108},
+  s7:{ruleY:640, logoY:500, contactY:720}
+} : {
+  heroY:700, ruleY:360,
+  s2:{x:M, y1:760, y2:896, size:90},
+  s3:{ph:[0,0,960,H], panel:[960,0,960,H], ruleX:960, x:1040, y:[250,404,558], size:66, lh2:80},
+  s4:{x:M, y1:250, y2:356, size:84, tiles:{x:1028,y:330,w:236,h:420,gap:12}, ruleY:560},
+  s5:{ph:[0,0,960,H], ruleX:960, x:1040, y0:200, pitch:196, size:58, rule:150},
+  s6:{ph:[0,0,960,H], ruleX:960, cx:1432, y0:330, lh:104, size:84},
+  s7:{ruleY:360, logoY:236, contactY:452}
+};
+
+/* ============================================================
+   MONTAGE (secondes)
+   ============================================================ */
+function build(){
+  /* fonds */
+  Rect({x:0,y:0,w:W,h:H,color:C.navy,tIn:15.5,tOut:31.1});
+
+  /* ---- SCÈNE 1 · 0.0–2.5 · « Invisible. » apparaît, puis disparaît lettre par lettre ---- */
+  {
+    const root=mk('div','abs'); const row=mk('div','row serif',root);
+    row.style.cssText+='font-size:100px;line-height:1;color:'+C.ink+';letter-spacing:-0.02em';
+    const ls='Invisible.'.split('').map(ch=>{const s=mk('span','w',row);s.textContent=ch;return s});
+    const w100=row.getBoundingClientRect().width, BIG=Math.floor((W-2*M)/w100*100*10)/10;
+    row.style.fontSize=BIG+'px'; root.style.left=M+'px'; root.style.top=(L.heroY-BIG/2)+'px';
+    const order=[6,2,8,0,5,9,3,7,1,4];                      // ordre de disparition
+    Rule({x:M,y:L.ruleY-1.5,w:W-2*M,color:C.orange,tIn:0.0,dur:.45,tOut:2.5});
+    OBJ.push({apply(t){
+      if(t>=2.5){root.style.display='none';return 'x'} root.style.display='block'; let sig='';
+      ls.forEach((s,i)=>{const pin=easeBack((t-(.1+i*.045))/.22), a=clamp((t-(.1+i*.045))*8);
+        const rank=order.indexOf(i), po=easeIO((t-(1.45+rank*.075))/.34);
+        const o=a*(1-po); s.style.opacity=r3(o); s.style.transform=`translateY(${r3((1-pin)*60)}px) scale(${r3(1+(1-pin)*.25)})`; sig+=r3(o)+','+r3(pin)+';'});
+      return sig;
+    }});
+  }
+
+  /* ---- SCÈNE 2 · 2.5–8.8 · l'artisan, puis la recherche ---- */
+  Photo({src:'craft_plane',x:0,y:0,w:W,h:H,tIn:2.5,tOut:5.5,wipe:'up',kb:[1.08,1.2],fx:.45,fy:.62,tint:.18});
+  Photo({src:'phone2',x:0,y:0,w:W,h:H,tIn:5.5,tOut:8.8,wipe:'right',kb:[1.08,1.2],fx:.5,fy:.5,tint:.18});
+  const s2=L.s2, S2=(txt,y,at,o={})=>Line({txt,size:s2.size,cls:'serif',color:C.cream,x:s2.x,y,bar:C.navy,at,stagger:.15,...o});
+  S2("Ce n’est pas votre travail",s2.y1,3.0,{tOut:5.35,exit:'slide'});
+  S2("qui est en cause.",s2.y2,3.85,{tOut:5.35,exit:'slide'});
+  S2("C’est ce qu’on trouve",s2.y1,5.8,{tOut:8.8});
+  S2("de vous.",s2.y2,6.7,{bar:C.orange,stagger:.2,tOut:8.8});
+
+  /* ---- SCÈNE 3 · 8.5–15.5 · trois lignes, trois photos ---- */
+  {
+    const s=L.s3;
+    Rect({x:s.panel[0],y:s.panel[1],w:s.panel[2],h:s.panel[3],color:C.cream,tIn:8.5,tOut:15.5,anim:V?'up':'right',dur:.32});
+    Photo({src:'laptop_blank',x:s.ph[0],y:s.ph[1],w:s.ph[2],h:s.ph[3],tIn:8.5,tOut:10.8,wipe:V?'up':'left',kb:[1.05,1.15],fx:.5,fy:.55});
+    Photo({src:'laptop_desk',x:s.ph[0],y:s.ph[1],w:s.ph[2],h:s.ph[3],tIn:10.8,tOut:13.1,wipe:V?'right':'down',kb:[1.05,1.15],fx:.5,fy:.55});
+    Photo({src:'phone1',x:s.ph[0],y:s.ph[1],w:s.ph[2],h:s.ph[3],tIn:13.1,tOut:15.5,wipe:V?'left':'up',kb:[1.05,1.15],fx:.62,fy:.62});
+    if(V) Rule({x:0,y:s.ruleY-1.5,w:W,color:C.orange,tIn:8.7,tOut:15.5}); else Rule({x:s.ruleX-1.5,y:0,w:3,h:H,color:C.orange,tIn:8.7,tOut:15.5,vertical:true});
+    const o={cls:'sans',size:s.size,x:s.x,stagger:.09,tOut:15.5};
+    Line({...o,txt:'Une fiche vide.',color:C.ink,y:s.y[0],at:8.85});
+    Line({...o,txt:'Un site de 2017.',color:C.ink,y:s.y[1],at:11.15});
+    Line({...o,txt:'Un formulaire qui',color:C.orange,y:s.y[2],at:13.45});
+    Line({...o,txt:'ne renvoie rien.',color:C.orange,y:s.y[2]+s.lh2,at:13.85});
+  }
+
+  /* ---- SCÈNE 4 · 15.5–23.0 · bascule bleue : on vous compare ---- */
+  {
+    const s=L.s4, o={cls:'serif',size:s.size,color:C.cream,x:s.x,stagger:.13};
+    Line({...o,txt:'On ne vous compare pas',y:s.y1,at:15.85,tOut:19.3,exit:'slide'});
+    Line({...o,txt:'à vos concurrents.',y:s.y2,at:16.45,tOut:19.3,exit:'slide'});
+    [['cafe',17.0,.5,.35],['bakery_counter',17.2,.5,.55],['storefront',17.4,.5,.6]].forEach(([src,at,fx,fy],i)=>{
+      const t=s.tiles; Photo({src,x:t.x+i*(t.w+t.gap),y:t.y,w:t.w,h:t.h,tIn:at,tOut:23.0,wipe:'up',kb:[1.04,1.26],fx,fy,tint:.1});
+    });
+    Line({...o,txt:'On vous compare à',y:s.y1,at:19.6,tOut:23.0});
+    Line({...o,txt:'ce qu’on voit d’eux.',y:s.y2,at:20.25,tOut:23.0,italic:true});
+    Rule({x:s.x,y:s.ruleY,w:300,color:C.orange,tIn:21.2,dur:.45,tOut:23.0});
+  }
+
+  /* ---- SCÈNE 5 · 23.0–31.0 · quatre lignes, quatre photos ---- */
+  {
+    const s=L.s5, items=[['Une page claire.','phone3',.5,.55,23.0],['Une fiche complète.','bakery_win',.5,.45,25.0],['Des photos justes.','bread_rack',.5,.5,27.0],['Quelqu’un qui l’entretient.','clay_smile',.5,.3,29.0]];
+    const wipes=V?['up','right','left','down']:['left','down','up','right'];
+    items.forEach(([txt,src,fx,fy,at],k)=>{
+      Photo({src,x:s.ph[0],y:s.ph[1],w:s.ph[2],h:s.ph[3],tIn:at,tOut:at+2.0,wipe:wipes[k],kb:[1.05,1.16],fx,fy});
+      const y=s.y0+k*s.pitch;
+      Rule({x:s.x,y:y,w:s.rule,color:C.orange,tIn:at+.25,dur:.35,tOut:31.1});
+      Line({txt,size:s.size,cls:'sans',color:C.cream,x:s.x,y:y+30,at:at+.45,stagger:.08,tOut:31.1});
+    });
+    if(V) Rule({x:0,y:s.ruleY-1.5,w:W,color:C.orange,tIn:23.2,tOut:31.1}); else Rule({x:s.ruleX-1.5,y:0,w:3,h:H,color:C.orange,tIn:23.2,tOut:31.1,vertical:true});
+  }
+
+  /* balayage crème : retour au calme (plans 6 et 7) */
+  Rect({x:0,y:0,w:W,h:H,color:C.cream,tIn:30.7,tOut:1e9,anim:'up',dur:.4});
+
+  /* ---- SCÈNE 6 · 31.0–36.5 · la phrase ---- */
+  {
+    const s=L.s6;
+    Photo({src:'bread_chef',x:s.ph[0],y:s.ph[1],w:s.ph[2],h:s.ph[3],tIn:31.2,tOut:36.5,wipe:V?'up':'left',kb:[1.04,1.2],fx:.55,fy:.42});
+    if(V) Rule({x:0,y:s.ruleY-1.5,w:W,color:C.orange,tIn:31.4,tOut:36.5}); else Rule({x:s.ruleX-1.5,y:0,w:3,h:H,color:C.orange,tIn:31.4,tOut:36.5,vertical:true});
+    const o={cls:'serif',size:s.size,color:C.ink,x:s.cx,align:'center',stagger:.2,tOut:36.5};
+    Line({...o,txt:'Votre métier mérite',y:s.y0,at:31.75});
+    Line({...o,txt:'mieux qu’un résultat',y:s.y0+s.lh,at:32.75});
+    Line({...o,txt:'de recherche.',y:s.y0+2*s.lh,at:33.75});
+  }
+
+  /* ---- SCÈNE 7 · 36.5–40.0 · signature ---- */
+  {
+    const s=L.s7;
+    Line({txt:'Vecteur d’excellence',size:V?112:120,cls:'serif',color:C.navy,x:W/2,align:'center',y:s.logoY-(V?56:60),at:36.65,stagger:.2,lh:1});
+    Rule({x:M,y:s.ruleY-1.5,w:W-2*M,color:C.orange,tIn:37.25,dur:.55});
+    Line({txt:'vecteur.excellence@gmail.com',size:V?40:38,cls:'sans',color:C.ink,x:W/2,align:'center',y:s.contactY-20,at:38.0,stagger:0,lh:1});
+  }
+}
+
+(async()=>{
+  await Promise.all(['500 100px CG','italic 500 100px CG','500 100px IN'].map(f=>document.fonts.load(f,'Invisible é’')));
+  build();
+  window.render=t=>{let s='';OBJ.forEach(o=>{s+=o.apply(t)+'/'});return s};
+  window.T_END=T_END;
+  window.overflowReport=()=>{const bad=[];document.querySelectorAll('.row').forEach(r=>{const b=r.getBoundingClientRect();if(b.right>W-M+2&&r.parentElement.style.left!==''&&parseFloat(r.parentElement.style.left)+b.width>W-M+2)bad.push(r.textContent+' '+Math.round(parseFloat(r.parentElement.style.left)+b.width))});return bad};
+  window.READY=true;
+})();
+</script>
+</body>
+</html>
